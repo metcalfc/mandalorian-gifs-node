@@ -2,50 +2,36 @@
 {
   "name": "Mandalorian GIFs",
 
-  // Choose to either reference an existing image or build from scratch
-  "build": {
-    "dockerfile": "../Dockerfile"
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:1-20-bookworm",
+  "features": {
+    "ghcr.io/metcalfc/devcontainer-features/doppler:0.1": {}
   },
-  // "image": "doppleruniversity/mandalorian-gifs-node",
-
-  // Required for installing dev packages. Avoid if possible.
-  // "containerUser": "root",
-
-  "postCreateCommand": "npm install --only dev --silent --no-audit",
-
-  "forwardPorts": [
-    8080
-  ],
-
-  // I prefer this to match the Docker image WORKDIR setting
-  "workspaceFolder": "/usr/src/app",
-
-  // Code mounting. Uncomment one of the below options
-
-  // 1. Volume
-  // "workspaceMount": "source=remote-workspace,target=/usr/src/app,type=volume",
-
-  // 2. Remote host mount (recommended) to get started.
-  // See https://code.visualstudio.com/docs/remote/containers#_sharing-git-credentials-with-your-container for other options
-  // "workspaceMount": "source=/home/ubuntu/mandalorian-gifs-node,target=/usr/src/app,type=bind,consistency=delegated",
-
-  // 3. Local host mount (local Docker only)
-  // "workspaceMount": "source=${localWorkspaceFolder},target=/usr/src/app,type=bind,consistency=delegated",
 
   // Doppler eliminates the need for .env files! To enable, open workspace from the terminal by running `./bin/doppler-vscode.sh`
   "containerEnv": {
     "DOPPLER_PROJECT": "mandalorian-gifs",
     "DOPPLER_CONFIG": "dev",
-    "DOPPLER_TOKEN": "${localEnv:DOPPLER_TOKEN}", // Don't hard-code this!
+    "DOPPLER_TOKEN": "${localEnv:DOPPLER_TOKEN}" // Don't hard-code this!
   },
 
-  // If you run into unexpected issues, this is worth a try
-  // "settings": {
-  //   "debug.javascript.usePreview": false,
-  // },
+  // Configure tool-specific properties.
+  "customizations": {
+    // Configure properties specific to VS Code.
+    "vscode": {
+      "settings": {},
+      "extensions": ["esbenp.prettier-vscode"]
+    }
+  },
 
-  // Custom remote extension example
-  "extensions": [
-    "esbenp.prettier-vscode"
-  ]
+  // Use 'portsAttributes' to set default properties for specific forwarded ports.
+  // More info: https://containers.dev/implementors/json_reference/#port-attributes
+  "portsAttributes": {
+    "8080": {
+      "label": "Preview",
+      "onAutoForward": "openPreview"
+    }
+  },
+
+  "postCreateCommand": "npm install --only dev --silent --no-audit",
+  "postAttachCommand": "npm start"
 }

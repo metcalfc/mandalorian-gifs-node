@@ -11,7 +11,8 @@
   "containerEnv": {
     "DOPPLER_PROJECT": "mandalorian-gifs",
     "DOPPLER_CONFIG": "dev",
-    "DOPPLER_TOKEN": "${localEnv:DOPPLER_TOKEN}" // Don't hard-code this!
+    //  I think if you set this it messes with Daytona
+    // "DOPPLER_TOKEN": "${localEnv:DOPPLER_TOKEN}" // Don't hard-code this!
   },
 
   // Configure tool-specific properties.

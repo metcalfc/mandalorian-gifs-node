@@ -33,5 +33,5 @@
   },
 
   "postCreateCommand": "npm install --only dev --silent --no-audit",
-  "postAttachCommand": "doppler run --mount .env -- npm start"
+  "postAttachCommand": "doppler run -- npm start"
 }

@@ -9,10 +9,9 @@
 
   // Doppler eliminates the need for .env files! To enable, open workspace from the terminal by running `./bin/doppler-vscode.sh`
   "containerEnv": {
-    "DOPPLER_PROJECT": "mandalorian-gifs",
+    "DOPPLER_PROJECT": "mandalorian-gifs-node",
     "DOPPLER_CONFIG": "dev",
-    //  I think if you set this it messes with Daytona
-    // "DOPPLER_TOKEN": "${localEnv:DOPPLER_TOKEN}" // Don't hard-code this!
+    "DOPPLER_TOKEN": "${localEnv:DOPPLER_TOKEN}" // Don't hard-code this!
   },
 
   // Configure tool-specific properties.
